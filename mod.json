@@ -1,0 +1,19 @@
+{
+	"geode": "4.5.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "alphii.gd-splash-text",
+	"name": "gd-splash-text",
+	"version": "v0.0.0",
+	"developer": "Alphii",
+	"description": "",
+	"resources": {
+		"files": [
+			"resources/*.splash"
+		]
+	}
+}

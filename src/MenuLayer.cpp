@@ -10,7 +10,7 @@ class $modify(ST_MenuLayer, MenuLayer)
 	struct Fields
 	{
 		std::string m_SplashStr;
-		SplashRead* m_SplashRead;
+		static SplashRead* m_SplashRead;
 		ScalingLabel* m_SplashText = nullptr;
 	};
 
@@ -21,7 +21,7 @@ class $modify(ST_MenuLayer, MenuLayer)
 			return false;
 		}
 		
-		m_fields->m_SplashRead = new SplashRead("splash.splash");
+		if (!m_fields->m_SplashRead) m_fields->m_SplashRead = new SplashRead("splash.splash");
 		m_fields->m_SplashStr = m_fields->m_SplashRead->getRandomLine();
 		auto mainTitle = getChildByID("main-title");
 		
@@ -47,3 +47,5 @@ class $modify(ST_MenuLayer, MenuLayer)
 		m_fields->m_SplashStr = m_fields->m_SplashRead->getRandomLine();
 	}
 };
+
+SplashRead* ST_MenuLayer::Fields::m_SplashRead = nullptr;

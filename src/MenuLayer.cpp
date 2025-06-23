@@ -23,7 +23,7 @@ class $modify(ST_MenuLayer, MenuLayer)
 		
 		if (!m_fields->m_SplashRead) m_fields->m_SplashRead = new SplashRead("splash.splash");
 		m_fields->m_SplashStr = m_fields->m_SplashRead->getRandomLine();
-		auto mainTitle = getChildByID("main-title");
+		auto mainTitle = getChildByIDRecursive("main-title");
 		
 		m_fields->m_SplashText = ScalingLabel::create(m_fields->m_SplashStr.c_str(), "goldFont.fnt");
 		m_fields->m_SplashText->setScale(0.5f / (1.0f + 0.05f * strlen(m_fields->m_SplashText->getLabel()->getString())));

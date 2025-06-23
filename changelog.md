@@ -1,3 +1,6 @@
+# 1.0.2
+- Updated Geode SDK to 4.6.1
+
 # 1.0.1
 - Fix memory leak. (Thanks kam7.dev)
 

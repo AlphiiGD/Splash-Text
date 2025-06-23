@@ -46,16 +46,13 @@ bool SplashRead::loadFile()
 			}
 		}
 
-		// Non-alphanumeric characters are not allowed, if we see one, we fail.
 		// Algorithm provided by undefined06855 on Discord and Git
+		std::string trimmedLine;
+		trimmedLine.reserve(line.length());
 		for (int i = 0; i < line.length(); i++)
 		{
-			if (line[i] == '\0') continue;
-			if (line[i] < ' ' || line[i] > '~')
-			{
-				log::error("Non-alphanumeric character detected at col {} of line {}", i + 1, lineNum);
-				return false;
-			}
+			if (line[i] == '\0' || line[i] == '\n' || line[i] == '\r' || line[i] < ' ' || line[i] > '~') continue;
+			trimmedLine += line[i];
 		}
 
 		// If our file stream fails during loading then we gotta return false
@@ -66,7 +63,7 @@ bool SplashRead::loadFile()
 		}
 
 		// Finally we can push back our processed string
-		m_Lines.push_back(line);
+		m_Lines.push_back(trimmedLine);
 		lineNum++;
 	}
 

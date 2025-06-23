@@ -53,8 +53,11 @@ bool SplashRead::loadFile()
 			if (line[i] == '\0') continue;
 			if (line[i] < ' ' || line[i] > '~')
 			{
-				log::error("Non-alphanumeric character detected at col {} of line {}", i + 1, lineNum);
-				return false;
+				if (line[i] != '\n' && line[i] != '\r')
+				{
+					log::error("Non-alphanumeric character detected at col {} of line {}", i + 1, lineNum);
+					return false;
+				}
 			}
 		}
 

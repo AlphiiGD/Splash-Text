@@ -31,7 +31,7 @@
 				"win": "",
 				"mac": "",
 				"android": "",
-				"ios": "{mod_config_dir}/default.splash"
+				"ios": ""
 			},
 			"control": {
 				"dialog": "open",

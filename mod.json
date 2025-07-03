@@ -25,13 +25,13 @@
 		"extra-splash-file": {
 			"type": "file",
 			"name": "Extra Splashes",
+			"platforms": ["android", "win", "mac"],
 			"description": "Additional splash texts, one per line. Restart your game to apply. See more info about writing these on the GitHub page!",
 			"requires-restart": true,
 			"default": {
 				"win": "",
 				"mac": "",
-				"android": "",
-				"ios": ""
+				"android": ""
 			},
 			"control": {
 				"dialog": "open",

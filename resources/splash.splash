@@ -3,13 +3,13 @@ Mod by Alphii!
 Also try The Impossible Game!
 What's your hardest?
 Over 9000 Stars!
-This splash text message is very long and at line 6 in the file!
+This splash text message is very long and at line __LINE__ in the file!
 rust sucks
 Look! Creator points!
 As seen on YouTube!
 Uses OpenGL!
 Yaaay!
-you are fuck map
+"Unlock new icons and colors by completing achievements!"
 Closed source!
 Open source!
 4,294,967,296 colors!
@@ -69,3 +69,7 @@ IDDQD
 impulse 101
 swpreme
 Good luck Doggie!
+__PLAYER_USERNAME__ is you!
+You are __RANDOM__% complete!
+Unlock icons from achievements!
+Triple Spikes!

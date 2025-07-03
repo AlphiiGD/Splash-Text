@@ -4,11 +4,14 @@
 using namespace geode::prelude;
 
 // Loads the file into a std::vector<string>, returns false if it fails.
-bool SplashRead::loadFile()
+bool SplashRead::loadFile(std::filesystem::path filePath)
 {
+	if (filePath.empty()) return false;
+
+	m_FileStream.open(filePath);
 	if (!m_FileStream.is_open())
 	{
-		log::error("Attempting to load a file from unopened stream!");
+		log::error("File failed to open! May not exist!");
 		return false;
 	}
 
@@ -45,53 +48,51 @@ bool SplashRead::loadFile()
 				continue;
 			}
 		}
+		
+		// Replace __LINE__ with the line number
+		std::string lineMacro = "__LINE__";
+		if (size_t pos = line.find(lineMacro);
+			pos != std::string::npos)
+		{
+			line.replace(pos, lineMacro.length(), std::to_string(lineNum));
+		}
 
-		// Non-alphanumeric characters are not allowed, if we see one, we fail.
+		// Replace __PLAYER_USERNAME__ with player name
+		std::string playerMacro = "__PLAYER_USERNAME__";
+		if (size_t pos = line.find(playerMacro);
+			pos != std::string::npos)
+		{
+			line.replace(pos, playerMacro.length(), GJAccountManager::get()->m_username);
+		}
+
 		// Algorithm provided by undefined06855 on Discord and Git
+		std::string trimmedLine;
+		trimmedLine.reserve(line.length());
 		for (int i = 0; i < line.length(); i++)
 		{
-			if (line[i] == '\0') continue;
-			if (line[i] < ' ' || line[i] > '~')
-			{
-				if (line[i] != '\n' && line[i] != '\r')
-				{
-					log::error("Non-alphanumeric character detected at col {} of line {}", i + 1, lineNum);
-					return false;
-				}
-			}
+			if (line[i] == '\0' || line[i] == '\n' || line[i] == '\r' || line[i] < ' ' || line[i] > '~') continue;
+			trimmedLine += line[i];
 		}
 
 		// If our file stream fails during loading then we gotta return false
 		if (m_FileStream.fail())
 		{
 			log::error("File stream failed during load.");
+			m_FileStream.close();
 			return false;
 		}
 
 		// Finally we can push back our processed string
-		m_Lines.push_back(line);
+		m_Lines.push_back(trimmedLine);
 		lineNum++;
 	}
 
+	m_FileStream.close();
 	return true;
 }
 
-SplashRead::SplashRead(std::string filePath)
+SplashRead::SplashRead()
 {
-	m_FileStream.open(Mod::get()->getResourcesDir() / filePath);
-	if (m_FileStream.fail())
-	{
-		log::error("Failed to open file {}", Mod::get()->getResourcesDir() / filePath);
-		m_FileStream.close();
-	}
-	
-	if (!loadFile())
-	{
-		log::error("Failed to load file {}", filePath);
-		m_Lines.clear();
-	}
-
-	m_FileStream.close();
 }
 
 std::string SplashRead::getRandomLine()
@@ -105,5 +106,17 @@ std::string SplashRead::getRandomLine()
 	std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(0, m_Lines.size() - 1);
-	return m_Lines[dis(gen)];
+
+	std::string selected = m_Lines[dis(gen)];
+	std::string splashText(selected); // Copy to avoid modifying original
+	
+	std::string randMacro = "__RANDOM__";
+	if (size_t pos = splashText.find(randMacro);
+		pos != std::string::npos)
+	{
+		std::uniform_int_distribution<> dis0_100(0, 100);
+		splashText.replace(pos, randMacro.length(), std::to_string(dis0_100(gen)));
+	}
+
+	return splashText;
 }

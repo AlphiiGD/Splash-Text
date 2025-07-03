@@ -8,12 +8,40 @@
 	},
 	"id": "alphii.gd-splash-text",
 	"name": "Splash Text!",
-	"version": "v1.0.2",
+	"version": "v1.1.0",
 	"developer": "Alphii",
 	"description": "",
+	"tags": ["enhancement", "offline"],
+	"links": {
+		"community": "https://discord.gg/tVPtwJexSX",
+		"source": "https://github.com/AlphiiGD/Splash-Text"
+	},
 	"resources": {
 		"files": [
 			"resources/*.splash"
 		]
+	},
+	"settings": {
+		"extra-splash-file": {
+			"type": "file",
+			"name": "Extra Splashes",
+			"description": "Additional splash texts, one per line. Restart your game to apply. See more info about writing these on the GitHub page!",
+			"requires-restart": true,
+			"default": {
+				"win": "",
+				"mac": "",
+				"android": "",
+				"ios": "{gd_dir}/Clubstep.mp3"
+			},
+			"control": {
+				"dialog": "open",
+				"filters": [
+					{
+						"files": ["*.splash", "*.txt", "*.text"],
+						"description": "Splash files."
+					}
+				]
+			}
+		}
 	}
 }

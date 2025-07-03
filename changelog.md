@@ -1,3 +1,9 @@
+# 1.1.0
+- Users can now create their own splashes!
+
+# 1.0.3
+- Fixed newline parsing
+
 # 1.0.2
 - Updated Geode SDK to 4.6.1
 

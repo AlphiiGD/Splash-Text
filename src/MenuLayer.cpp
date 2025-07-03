@@ -21,9 +21,22 @@ class $modify(ST_MenuLayer, MenuLayer)
 			return false;
 		}
 		
-		if (!m_fields->m_SplashRead) m_fields->m_SplashRead = new SplashRead("splash.splash");
+		if (!m_fields->m_SplashRead)
+		{
+			m_fields->m_SplashRead = new SplashRead();
+			if (!m_fields->m_SplashRead->loadFile(Mod::get()->getResourcesDir() / "splash.splash"))
+			{
+				log::error("Failed to load file {}", Mod::get()->getResourcesDir() / "splash.splash");
+			}
+
+			auto extraPath = Mod::get()->getSettingValue<std::filesystem::path>("extra-splash-file");
+			if (!extraPath.empty() && !m_fields->m_SplashRead->loadFile(extraPath))
+			{
+				log::error("Failed to load file {}", extraPath.string());
+			}
+		}
 		m_fields->m_SplashStr = m_fields->m_SplashRead->getRandomLine();
-		auto mainTitle = getChildByID("main-title");
+		auto mainTitle = getChildByIDRecursive("main-title");
 		
 		m_fields->m_SplashText = ScalingLabel::create(m_fields->m_SplashStr.c_str(), "goldFont.fnt");
 		m_fields->m_SplashText->setScale(0.5f / (1.0f + 0.05f * strlen(m_fields->m_SplashText->getLabel()->getString())));

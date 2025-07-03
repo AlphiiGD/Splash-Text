@@ -31,7 +31,7 @@
 				"win": "",
 				"mac": "",
 				"android": "",
-				"ios": "{gd_dir}/Clubstep.mp3"
+				"ios": "{mod_config_dir}"
 			},
 			"control": {
 				"dialog": "open",

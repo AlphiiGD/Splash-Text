@@ -38,3 +38,6 @@ add some special flair to your splashes.
 | \_\_LINE\_\_ | The line number in the file |
 | \_\_PLAYER\_USERNAME\_\_ | The GD account username of the user |
 | \_\_RANDOM\_\_ | Random number between 0 and 100 |
+
+# Contributing
+If you want to make this project better, just make a PR! :D

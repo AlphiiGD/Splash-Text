@@ -1,5 +1,5 @@
 # 1.1.0
-- Users can now create their own splashes!
+- Users not on iOS can now create their own splashes!
 
 # 1.0.3
 - Fixed newline parsing

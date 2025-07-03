@@ -29,11 +29,13 @@ class $modify(ST_MenuLayer, MenuLayer)
 				log::error("Failed to load file {}", Mod::get()->getResourcesDir() / "splash.splash");
 			}
 
+		#ifndef GEODE_IS_IOS
 			auto extraPath = Mod::get()->getSettingValue<std::filesystem::path>("extra-splash-file");
 			if (!extraPath.empty() && !m_fields->m_SplashRead->loadFile(extraPath))
 			{
 				log::error("Failed to load file {}", extraPath.string());
 			}
+		#endif // ifndef GEODE_IS_IOS
 		}
 		m_fields->m_SplashStr = m_fields->m_SplashRead->getRandomLine();
 		auto mainTitle = getChildByIDRecursive("main-title");

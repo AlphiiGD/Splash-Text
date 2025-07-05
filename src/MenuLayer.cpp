@@ -41,9 +41,17 @@ class $modify(ST_MenuLayer, MenuLayer)
 		auto mainTitle = getChildByIDRecursive("main-title");
 		
 		m_fields->m_SplashText = ScalingLabel::create(m_fields->m_SplashStr.c_str(), "goldFont.fnt");
+
+		// The scale here is an inverse scaling function for text used pretty often for UI.
 		m_fields->m_SplashText->setScale(0.5f / (1.0f + 0.05f * strlen(m_fields->m_SplashText->getLabel()->getString())));
-		m_fields->m_SplashText->setPosition(mainTitle->getContentSize().width - 10.f, mainTitle->getContentSize().height * 0.5f);
-		m_fields->m_SplashText->setRotation(20.0f);
+		m_fields->m_SplashText->setPosition(
+			// The magic numbers are the percentage offset to get the anchor point at the bottom right
+			// of the actual text and not the sprite.
+			mainTitle->getContentSize().width - mainTitle->getContentSize().width * 0.0175f,
+			mainTitle->getContentSize().height * 0.1923f
+		);
+
+		m_fields->m_SplashText->setRotation(Mod::get()->getSettingValue<float>("splash-rotation"));
 		mainTitle->addChild(m_fields->m_SplashText);
 		
 		return true;

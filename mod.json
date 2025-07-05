@@ -8,7 +8,7 @@
 	},
 	"id": "alphii.gd-splash-text",
 	"name": "Splash Text!",
-	"version": "v1.1.0",
+	"version": "v1.2.0",
 	"developer": "Alphii",
 	"description": "Minecraft-style splashes in the main menu!",
 	"tags": ["enhancement", "offline"],
@@ -40,6 +40,17 @@
 						"description": "Splash files."
 					}
 				]
+			}
+		},
+		"splash-rotation": {
+			"type": "float",
+			"name": "Splash Text Rotation",
+			"description": "The rotation for the splash in the main menu. Default is -20",
+			"default": -20,
+			"min": -180,
+			"max": 180,
+			"control": {
+				"slider": true
 			}
 		}
 	}

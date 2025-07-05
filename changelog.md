@@ -1,3 +1,9 @@
+# 1.2.0
+- 25 New Splashes!
+- Splash label is now more like Minecraft.
+- Splash label rotation now customizable.
+- Updated about.md to have info on creating new splashes
+
 # 1.1.0
 - Users not on iOS can now create their own splashes!
 

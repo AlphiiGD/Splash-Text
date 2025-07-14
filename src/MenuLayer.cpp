@@ -24,10 +24,13 @@ class $modify(ST_MenuLayer, MenuLayer)
 		if (!m_fields->m_SplashRead)
 		{
 			m_fields->m_SplashRead = new SplashRead();
-			if (!m_fields->m_SplashRead->loadFile(Mod::get()->getResourcesDir() / "splash.splash"))
-			{
-				log::error("Failed to load file {}", Mod::get()->getResourcesDir() / "splash.splash");
-			}
+            if (!Mod::get()->getSettingValue<bool>("disable-default-splash"))
+            {
+                if (!m_fields->m_SplashRead->loadFile(Mod::get()->getResourcesDir() / "splash.splash"))
+                {
+                    log::error("Failed to load file {}", Mod::get()->getResourcesDir() / "splash.splash");
+                }
+            }
 
 		#ifndef GEODE_IS_IOS
 			auto extraPath = Mod::get()->getSettingValue<std::filesystem::path>("extra-splash-file");

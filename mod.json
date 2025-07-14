@@ -8,7 +8,7 @@
 	},
 	"id": "alphii.gd-splash-text",
 	"name": "Splash Text!",
-	"version": "v1.2.0",
+	"version": "v1.3.0",
 	"developer": "Alphii",
 	"description": "Minecraft-style splashes in the main menu!",
 	"tags": ["enhancement", "offline"],
@@ -52,6 +52,13 @@
 			"control": {
 				"slider": true
 			}
-		}
+		},
+        "disable-default-splash": {
+            "type": "bool",
+            "name": "Disable Default Splashes",
+            "platforms": ["win", "android", "mac"],
+            "description": "Disabled the build-in splashes from appearing. Useful if you want only your custom splashes to appear. Requires restart.",
+            "default": false
+        }
 	}
 }

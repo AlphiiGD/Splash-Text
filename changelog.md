@@ -1,3 +1,6 @@
+# 1.3.0
+- Added option to disable default splashes.
+
 # 1.2.0
 - 25 New Splashes!
 - Splash label is now more like Minecraft.

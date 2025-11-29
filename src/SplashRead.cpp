@@ -15,9 +15,6 @@ bool SplashRead::loadFile(std::filesystem::path filePath)
         return false;
     }
 
-    std::optional<std::chrono::month_day> dateRangeStart = std::nullopt;
-    std::optional<std::chrono::month_day> dateRangeEnd = std::nullopt;
-
     std::string line;
     int lineNum = 1;
     while (std::getline(m_FileStream, line))
@@ -140,7 +137,7 @@ bool SplashRead::parseKeyword(const std::string& line)
         auto res = dr.parse(line.substr(getNextWord(line, 0)));
         if (!res)
         {
-            log::error("Failed to parse date range: ({}{}, {}{})\n{}!", dr.getStart().month(), dr.getStart().day(), dr.getEnd().month(), dr.getEnd().day(), res.unwrapErr());
+            log::error("Failed to parse date range! Reason: {}", res.unwrapErr());
             return false;
         }
 

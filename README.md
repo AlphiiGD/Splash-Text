@@ -60,8 +60,8 @@ so only when the user is within *all* ranges can the splash appear.
 
 > [!NOTE]
 > For date ranges where the start of the range is *after* the end of the range,
-> the end of the range is assumed to be in the following year. So, `09-01 01-01`
-> is implcitily `09-01-CurrentYear 09-01-NextYear`
+> the end of the range is assumed to be in the following year. So, `09-01 08-28`
+> is implcitily `09-01-CurrentYear 08-28-NextYear`
 
 # Contributing
 If you want to make this project better, just make a PR! :D

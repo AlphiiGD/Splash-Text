@@ -3,10 +3,12 @@
 geode::Result<> DateRange::parse(const std::string& str, size_t start)
 {
     std::istringstream istrs(str.substr(start));
-    istrs
-    >> std::chrono::parse("%m-%d", m_Start)
-    >> std::ws
-    >> std::chrono::parse("%m-%d", m_End);
+    if (!(std::chrono::from_stream(istrs, "%m-%d", m_Start) &&
+        istrs >> std::ws &&
+        std::chrono::from_stream(istrs, "%m-%d", m_End)))
+    {
+        return geode::Err("Failed to parse DateRange");
+    }
 
     if (istrs.fail()) return geode::Err("Stringstream failed!");
     if (!m_Start.ok()) return geode::Err("Start not OK!");

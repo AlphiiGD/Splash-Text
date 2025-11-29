@@ -43,7 +43,8 @@ class $modify(ST_MenuLayer, MenuLayer)
 		m_fields->m_SplashStr = m_fields->m_SplashRead->getRandomLine();
 		auto mainTitle = getChildByIDRecursive("main-title");
 		
-		m_fields->m_SplashText = ScalingLabel::create(m_fields->m_SplashStr.c_str(), "goldFont.fnt");
+        float scaleSpeed = Mod::get()->getSettingValue<float>("scaling-speed");
+		m_fields->m_SplashText = ScalingLabel::create(m_fields->m_SplashStr.c_str(), "goldFont.fnt", scaleSpeed);
 
 		// The scale here is an inverse scaling function for text used pretty often for UI.
 		m_fields->m_SplashText->setScale(0.5f / (1.0f + 0.05f * strlen(m_fields->m_SplashText->getLabel()->getString())));

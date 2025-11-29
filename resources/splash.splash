@@ -99,3 +99,17 @@ Glubfub!
 The chicken is ready!
 Rock Lobster!
 Gimmie! Gimmie! Gimmie!
+
+.DATERANGE 12-15 12-26
+Ho! Ho! Ho!
+Merry Christmas!
+./DATERANGE
+
+.DATERANGE 2-14 2-15
+I LOVE YOU!
+Will you be my Valentine?
+./DATERANGE
+
+.DATERANGE 01-01 01-02
+This splash can only appear on New Years!
+./DATERANGE

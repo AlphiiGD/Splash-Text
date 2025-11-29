@@ -1,3 +1,9 @@
+# 1.4.0
+- Added Date Ranges to splashes.
+- Added new festive Christmas splashes (In effect Dec. 15-25).
+- Added new happy New Years splashes (In effect Jan. 1).
+- Added new joyous Valentine's Day splashes (In effect Feb. 14).
+
 # 1.3.0
 - Added option to disable default splashes.
 

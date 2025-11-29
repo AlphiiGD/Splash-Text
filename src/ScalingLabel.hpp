@@ -8,6 +8,7 @@ class ScalingLabel : public CCNode
 {
 private:
 	float m_ScalingFactor;
+    float m_Time;
 	bool m_ShouldShrink;
 	std::string m_Text;
 	std::string m_FntFile;

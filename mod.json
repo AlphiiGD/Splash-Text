@@ -1,58 +1,69 @@
 {
-	"geode": "4.6.1",
-	"gd": {
-		"win": "2.2074",
-		"android": "2.2074",
-		"mac": "2.2074",
-		"ios": "2.2074"
-	},
-	"id": "alphii.gd-splash-text",
-	"name": "Splash Text!",
-	"version": "v1.3.0",
-	"developer": "Alphii",
-	"description": "Minecraft-style splashes in the main menu!",
-	"tags": ["enhancement", "offline"],
-	"links": {
-		"community": "https://discord.gg/tVPtwJexSX",
-		"source": "https://github.com/AlphiiGD/Splash-Text"
-	},
-	"resources": {
-		"files": [
-			"resources/*.splash"
-		]
-	},
-	"settings": {
-		"extra-splash-file": {
-			"type": "file",
-			"name": "Extra Splashes",
-			"platforms": ["android", "win", "mac"],
-			"description": "Additional splash texts, one per line. Restart your game to apply. See more info about writing these on the GitHub page!",
-			"default": {
-				"win": "",
-				"mac": "",
-				"android": ""
-			},
-			"control": {
-				"dialog": "open",
-				"filters": [
-					{
-						"files": ["*.splash", "*.txt", "*.text"],
-						"description": "Splash files."
-					}
-				]
-			}
-		},
-		"splash-rotation": {
-			"type": "float",
-			"name": "Splash Text Rotation",
-			"description": "The rotation for the splash in the main menu. Default is -20",
-			"default": -20,
-			"min": -180,
-			"max": 180,
-			"control": {
-				"slider": true
-			}
-		},
+    "geode": "4.10.0",
+    "gd": {
+        "win": "2.2074",
+        "android": "2.2074",
+        "mac": "2.2074",
+        "ios": "2.2074"
+    },
+    "id": "alphii.gd-splash-text",
+    "name": "Splash Text!",
+    "version": "v1.4.0",
+    "developer": "Alphii",
+    "description": "Minecraft-style splashes in the main menu!",
+    "tags": ["enhancement", "offline"],
+    "links": {
+        "community": "https://discord.gg/tVPtwJexSX",
+        "source": "https://github.com/AlphiiGD/Splash-Text"
+    },
+    "resources": {
+        "files": [
+            "resources/*.splash"
+        ]
+    },
+    "settings": {
+        "extra-splash-file": {
+            "type": "file",
+            "name": "Extra Splashes",
+            "platforms": ["android", "win", "mac"],
+            "description": "Additional splash texts, one per line. Restart your game to apply. See more info about writing these on the GitHub page!",
+                "default": {
+                "win": "",
+                "mac": "",
+                "android": ""
+            },
+            "control": {
+                "dialog": "open",
+                "filters": [
+                    {
+                        "files": ["*.splash", "*.txt", "*.text"],
+                        "description": "Splash files."
+                    }
+                ]
+            }
+        },
+        "splash-rotation": {
+            "type": "float",
+            "name": "Splash Text Rotation",
+            "description": "The rotation for the splash in the main menu. Default is -20",
+            "default": -20,
+            "min": -180,
+            "max": 180,
+            "control": {
+                "slider": true
+            }
+        },
+        "scaling-speed": {
+            "type": "float",
+            "name": "Splash Text Scaling Speed",
+            "description": "The speed at which the splash text scales in the main menu. Default is 1",
+            "default": 1,
+            "min": 0.1,
+            "max": 5,
+            "control": {
+                "slider": true
+            }
+        },
         "disable-default-splash": {
             "type": "bool",
             "name": "Disable Default Splashes",
@@ -60,5 +71,5 @@
             "description": "Disabled the build-in splashes from appearing. Useful if you want only your custom splashes to appear. Requires restart.",
             "default": false
         }
-	}
+    }
 }

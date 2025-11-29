@@ -3,7 +3,7 @@
 using namespace geode::prelude;
 
 ScalingLabel::ScalingLabel(std::string text, std::string fntFile, float scalingFactor)
-	: m_Text(text), m_FntFile(fntFile), m_ScalingFactor(scalingFactor)
+	: m_Text(text), m_FntFile(fntFile), m_ScalingFactor(scalingFactor), m_Time(0.0f)
 {
 }
 
@@ -22,22 +22,9 @@ bool ScalingLabel::init()
 
 void ScalingLabel::update(float dt)
 {
-	if (m_ShouldShrink)
-	{
-		m_Label->setScale(m_Label->getScale() - m_ScalingFactor * dt);
-		if (m_Label->getScale() <= 0.7f)
-		{
-			m_ShouldShrink = false;
-		}
-	}
-	else
-	{
-		m_Label->setScale(m_Label->getScale() + m_ScalingFactor * dt);
-		if (m_Label->getScale() >= 1.3f)
-		{
-			m_ShouldShrink = true;
-		}
-	}
+    m_Time += dt * m_ScalingFactor;
+    float newScale = 1.0f + std::sin(m_Time * 3.0f) * 0.3f; // https://www.desmos.com/calculator/gcf3iidbr6
+    m_Label->setScale(newScale);
 }
 
 ScalingLabel* ScalingLabel::create(std::string text, std::string fntFile, float scalingFactor)

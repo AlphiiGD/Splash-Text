@@ -39,5 +39,29 @@ add some special flair to your splashes.
 | \_\_PLAYER\_USERNAME\_\_ | The GD account username of the user |
 | \_\_RANDOM\_\_ | Random number between 0 and 100 |
 
+## Keywords (Date Range)
+The most recent addition to the family! There are currently only two keywords.
+These keywords denote the start and end of a *date range*. A date range is a selection
+of splashes that will only appear when the system clock of the user is within the
+specified range of dates where the date represents midnight of the specified day.
+
+For example:
+```
+.DATERANGE 01-01 01-02
+This splash can only appear on New Years!
+./DATERANGE
+```
+
+Currently `.(/)DATERANGE` is the only keyword.
+It is specified by using a dot (.) to indicate it is a keyword, then the keyword
+itself (DATERANGE), when you want to end use of a date range, use the `DATERANGE`
+keyword with a leading slash `./DATERANGE`. Additionally, you can nest date ranges
+so only when the user is within *all* ranges can the splash appear.
+
+> [!NOTE]
+> For date ranges where the start of the range is *after* the end of the range,
+> the end of the range is assumed to be in the following year. So, `09-01 01-01`
+> is implcitily `09-01-CurrentYear 09-01-NextYear`
+
 # Contributing
 If you want to make this project better, just make a PR! :D

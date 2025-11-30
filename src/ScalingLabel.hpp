@@ -20,5 +20,6 @@ public:
 	inline void setScalingFactor(float scalingFactor) { m_ScalingFactor = scalingFactor; }
 	bool init() override;
 	void update(float dt) override;
+    void resetLabelScale();
 	static ScalingLabel* create(std::string text, std::string fntFile, float scalingFactor = 0.5f);
 };

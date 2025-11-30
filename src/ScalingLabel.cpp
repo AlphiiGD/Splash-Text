@@ -27,6 +27,12 @@ void ScalingLabel::update(float dt)
     m_Label->setScale(newScale);
 }
 
+void ScalingLabel::resetLabelScale()
+{
+    // The scale here is an inverse scaling function for text used pretty often for UI.
+    this->setScale(0.5f / (1.0f + 0.05f * strlen(this->getLabel()->getString())));
+}
+
 ScalingLabel* ScalingLabel::create(std::string text, std::string fntFile, float scalingFactor)
 {
 	auto ret = new ScalingLabel(text, fntFile, scalingFactor);

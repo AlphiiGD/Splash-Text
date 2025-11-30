@@ -11,7 +11,7 @@ bool SplashRead::loadFile(std::filesystem::path filePath)
     m_FileStream.open(filePath);
     if (!m_FileStream.is_open())
     {
-        log::error("File failed to open! May not exist!");
+        log::error("File failed to open! May not exist or may be open in another program!");
         return false;
     }
 

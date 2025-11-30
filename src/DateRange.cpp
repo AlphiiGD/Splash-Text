@@ -1,18 +1,28 @@
 #include "DateRange.hpp"
 
+// Very strict algorithm at the moment, must be formatted as "MM-DD MM-DD"
+// Leading 0 not required for single digit months
 geode::Result<> DateRange::parse(const std::string& str, size_t start)
 {
+    int sM, sD, eM, eD;
+    char delimiter;
     std::istringstream istrs(str.substr(start));
-    if (!(std::chrono::from_stream(istrs, "%m-%d", m_Start) &&
-        istrs >> std::ws &&
-        std::chrono::from_stream(istrs, "%m-%d", m_End)))
-    {
-        return geode::Err("Failed to parse DateRange");
-    }
+    istrs >> sM >> delimiter >> sD >> std::ws >> eM >> delimiter >> eD;
+    if (delimiter != '-')
+        return geode::Err("Error parsing date format! Improper delimiter!");
+    if (istrs.fail())
+        return geode::Err("Stringstream failed!");
 
-    if (istrs.fail()) return geode::Err("Stringstream failed!");
-    if (!m_Start.ok()) return geode::Err("Start not OK!");
-    if (!m_End.ok()) return geode::Err("End not OK!");
+    m_Start =
+        std::chrono::month_day(std::chrono::month(sM), std::chrono::day(sD));
+    m_End =
+        std::chrono::month_day(std::chrono::month(eM), std::chrono::day(eD));
+
+    if (!m_Start.ok())
+        return geode::Err("Start not OK! (Incorrect date format?)");
+    if (!m_End.ok())
+        return geode::Err("End not OK! (Incorrect date format?)");
+
     return geode::Ok();
 }
 

@@ -15,6 +15,8 @@ bool ScalingLabel::init()
 	}
 
 	m_Label = CCLabelBMFont::create(m_Text.c_str(), m_FntFile.c_str());
+    if (!m_Label)
+        return false;
 	addChild(m_Label);
 	scheduleUpdate();
 	return true;
@@ -35,13 +37,13 @@ void ScalingLabel::resetLabelScale()
 
 ScalingLabel* ScalingLabel::create(std::string text, std::string fntFile, float scalingFactor)
 {
-	auto ret = new ScalingLabel(text, fntFile, scalingFactor);
-	if (ret->init())
-	{
-		ret->autorelease();
-		return ret;
-	}
+    auto ret = new ScalingLabel(text, fntFile, scalingFactor);
+    if (ret->init())
+    {
+        ret->autorelease();
+        return ret;
+    }
 
-	delete ret;
-	return nullptr;
+    delete ret;
+    return nullptr;
 }

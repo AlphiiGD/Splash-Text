@@ -34,7 +34,5 @@ bool DateRange::inRange(const std::chrono::year_month_day& currentDate) const
     if (m_Start > m_End) year++; // Allow wrapping to the next year
     std::chrono::sys_days end(year / m_End);
 
-    geode::log::error("Current Date: {}\nStart: {}\nEnd: {}", current, start, end);
-
     return current >= start && current <= end;
 }

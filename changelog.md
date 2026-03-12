@@ -1,3 +1,7 @@
+# 1.4.1
+- Updated Geode SDK to 5.3.0
+- Updated to GD 2.2081
+
 # 1.4.0
 - Added Date Ranges to splashes.
 - Added new festive Christmas splashes (In effect Dec. 15-25).

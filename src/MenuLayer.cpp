@@ -50,7 +50,7 @@ class $modify(ST_MenuLayer, MenuLayer)
 		m_fields->m_SplashText->setPosition(
 			// The magic numbers are the percentage offset to get the anchor point at the bottom right
 			// of the actual text and not the sprite.
-			mainTitle->getContentSize().width - mainTitle->getContentSize().width * 0.0175f,
+			mainTitle->getContentSize().width * 1.0f - 0.0175f,
 			mainTitle->getContentSize().height * 0.1923f
 		);
 
